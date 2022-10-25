@@ -2,7 +2,7 @@
 //10/25/2022
 //Greater Than or Less than
 //The user will input 2 numbers and the program will determine if one number is greater than less than or equal.
-//Reviewed by:
+//Reviewed by: Jasmine Leek - really nice work! API runs the program as intended for all conditions tested. Errors generated properly!
 
 
 using Microsoft.AspNetCore.Mvc;
@@ -26,17 +26,25 @@ public class GreaterThanLessThanController : ControllerBase
         Truth = double.TryParse(num1, out Validnum);
         Truth2 = double.TryParse(num2, out Validnum2);
 
-        if (Validnum > Validnum2)
+        if (Truth == true && Truth2 == true)
         {
-            return $"This program will prompt the user to input 2 numbers and will determin which number is greater or less than, for example \n{Validnum} is greater than  + {Validnum2} \n{Validnum2} + is Less than  + {Validnum}";
-        }
-        else if (Validnum < Validnum2)
-        {
-            return $"This program will prompt the user to input 2 numbers and will determin which number is greater or less than, for example \n{Validnum} is Less than {Validnum2} \n{Validnum2}  is greater than {Validnum}";
+            if (Validnum > Validnum2)
+            {
+                return $"{Validnum} is greater than {Validnum2} \n{Validnum2} is Less than {Validnum}";
+            }
+            else if (Validnum < Validnum2)
+            {
+                return $"{Validnum} is Less than {Validnum2} \n{Validnum2} is greater than {Validnum}";
+            }
+            else
+            {
+                return $"{Validnum} Is equal too {Validnum2}";
+            }
         }
         else
         {
-            return $"{Validnum} Is equal too {Validnum2}";
+            return "Error: \nThose were not numbers!";
         }
     }
+
 }
